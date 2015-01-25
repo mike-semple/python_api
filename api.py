@@ -1,5 +1,6 @@
 #school Computers Api V1.1 
 #Written in python by Mike Semple
+import os
 import json
 import bottle
 from bottle import route, run, request, abort
@@ -82,5 +83,5 @@ def get_entity(id):
     entity1 = 'hello world'
     return entity1
   
-run(host='school-computers.herokuapp.com', port=8080)
+run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
 
