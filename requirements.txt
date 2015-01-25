@@ -1,0 +1,4 @@
+bottle==0.12.8
+json==2.0.9
+pymongo==2.7.2
+
