@@ -1,1 +1,1 @@
-web: sudo python api.py
+web: python api.py
