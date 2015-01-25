@@ -3,10 +3,10 @@
 import json
 import bottle
 from bottle import route, run, request, abort
-from pymongo import Connection
+#from pymongo import Connection
  
-connection = Connection('localhost', 27017)
-db = connection.mydatabase
+#connection = Connection('localhost', 27017)
+#db = connection.mydatabase
 
 #This will be taken out for production
 @route('/api/v1.1/14be4a968a6c807ba132ab6a', method='PUT') #obstructed PUT URL so no random data can be added / noSQL injection can be used
