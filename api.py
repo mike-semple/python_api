@@ -77,5 +77,5 @@ def get_entity(id):
         abort(404, 'No document with id %s' % id)
     return entity
   
-run(host='0.0.0.0', port=8080)
+run(host='0.0.0.0', port=80)
 
