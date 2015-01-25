@@ -76,6 +76,11 @@ def get_entity(id):
     if not entity:
         abort(404, 'No document with id %s' % id)
     return entity
+
+@route('/', method='GET')
+def get_entity(id):
+    entity1 = 'hello world'
+    return entity1
   
-run(host='0.0.0.0', port=80)
+run(host='school-computers.herokuapp.com', port=8080)
 
