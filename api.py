@@ -7,7 +7,9 @@ from pymongo import Connection
  
 connection = Connection('localhost', 27017)
 db = connection.mydatabase
-@route('/api/v1.1/14be4a968a6c807ba132ab6a', method='PUT')
+
+#This will be taken out for production
+@route('/api/v1.1/14be4a968a6c807ba132ab6a', method='PUT') #obstructed PUT so no random data can be added / noSQL injection can be used
 def put_document_old():
     data = request.body.readline()
     if not data:
@@ -19,7 +21,8 @@ def put_document_old():
         db['computers'].save(entity)
     except ValidationError as ve:
         abort(400, str(ve))
-        
+
+
 @route('/api/v1.1/reserve', method='PUT')
 def reserve():
     data = request.body.readline()
@@ -32,7 +35,7 @@ def reserve():
       rm_no = entity['_id']
       rm = db['computers'].find_one({'_id':rm_no})
       old_rm = rm['no_pcs']
-      if old_rm > 0:
+      if old_rm > 0: #Last resort check put in place
         new_rm = old_rm - 1
         rm['no_pcs'] = new_rm
         db['computers'].save(rm)
@@ -56,7 +59,7 @@ def cancel():
       rm = db['computers'].find_one({'_id':rm_no})
       old_rm = rm['no_pcs']
       max_pc = rm['max_pcs']
-      if old_rm < max_pc:
+      if old_rm < max_pc: #Last resort check put in place
         new_rm = old_rm + 1
         rm['no_pcs'] = new_rm
         db['computers'].save(rm)
